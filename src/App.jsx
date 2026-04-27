@@ -453,7 +453,7 @@ function SimulationContext({ state, dispatch }) {
           <div className="relative flex items-center justify-between gap-4 pb-4">
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-slate-400">Intersection Command Center</p>
-              <h1 className="mt-2 text-2xl font-semibold text-white sm:text-3xl">Smart Traffic Optimization Dashboard</h1>
+              <h1 className="mt-2 text-2xl font-semibold text-white sm:text-3xl">Margadarshaka</h1>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
                 Live 4-way intersection simulation with a fixed timing baseline and a greedy adaptive controller running side by side.
               </p>
@@ -1025,8 +1025,8 @@ function Sidebar({ state, dispatch }) {
       className="glass-panel sticky top-24 rounded-3xl p-5 backdrop-blur-2xl"
     >
       <div className="rounded-3xl border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(245,249,255,0.88))] p-5">
-        <p className="text-xs uppercase tracking-[0.35em] text-slate-400">Dashboard</p>
-        <h2 className="mt-2 text-2xl font-semibold text-slate-800">Traffic Operations</h2>
+        <p className="text-xs uppercase tracking-[0.35em] text-slate-400">Control Center</p>
+        <h2 className="mt-2 text-2xl font-semibold text-slate-800">Margadarshaka</h2>
         <p className="mt-3 text-sm leading-6 text-slate-300">
           Smart traffic control with glass UI, live telemetry, and side-by-side comparison of fixed versus greedy timing.
         </p>
