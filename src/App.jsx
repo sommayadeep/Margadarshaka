@@ -545,44 +545,64 @@ function SimulationContext({ state, dispatch }) {
                     initial={{ opacity: 0, x: 18 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -18 }}
-                    className={`rounded-2xl border px-4 py-3 text-sm ${
+                    className={`rounded-2xl border px-4 py-3 text-sm font-medium ${
                       alert.type === 'danger'
-                        ? 'border-rose-400/20 bg-rose-500/10 text-rose-100'
+                        ? 'border-rose-400/40 bg-slate-900/95 text-rose-200'
                         : alert.type === 'priority'
-                          ? 'border-amber-400/20 bg-amber-500/10 text-amber-100'
-                          : 'border-cyan-400/20 bg-cyan-500/10 text-cyan-100'
+                          ? 'border-amber-400/40 bg-slate-900/95 text-amber-200'
+                          : 'border-cyan-400/40 bg-slate-900/95 text-cyan-200'
                     }`}
                   >
                     {alert.text}
                   </motion.div>
                 ))
               ) : (
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-300">
+                <div className="rounded-2xl border border-white/20 bg-slate-900/90 p-4 text-sm text-slate-100 font-medium">
                   No active warnings. Traffic flow is stable.
                 </div>
               )}
             </AnimatePresence>
           </div>
 
-          <div className="mt-5 rounded-2xl border border-white/10 bg-slate-950/40 p-4">
+          <div
+            className="mt-5 rounded-2xl border p-4"
+            style={{
+              borderColor: 'rgba(148, 163, 184, 0.38)',
+              backgroundColor: 'rgba(15, 23, 42, 0.98)',
+            }}
+          >
             <div className="flex items-center justify-between">
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Signal Switching Logs</p>
-              <ShieldAlert className="h-4 w-4 text-slate-400" />
+              <p className="text-xs uppercase tracking-[0.3em]" style={{ color: '#e2e8f0' }}>
+                Signal Switching Logs
+              </p>
+              <ShieldAlert className="h-4 w-4" style={{ color: '#e2e8f0' }} />
             </div>
             <div className="mt-3 max-h-64 space-y-3 overflow-auto pr-1 scrollbar-thin">
               {logs.slice(0, 7).map((entry) => (
-                <div key={entry.id} className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                <div
+                  key={entry.id}
+                  className="rounded-2xl border p-3"
+                  style={{
+                    borderColor: 'rgba(255, 255, 255, 0.16)',
+                    backgroundColor: 'rgba(30, 41, 59, 0.96)',
+                  }}
+                >
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-xs uppercase tracking-[0.25em] text-slate-500">{entry.time}</span>
+                    <span className="text-xs uppercase tracking-[0.25em]" style={{ color: '#f8fafc' }}>
+                      {entry.time}
+                    </span>
                     <span
-                      className={`text-[11px] uppercase tracking-[0.2em] ${
-                        entry.level === 'danger' ? 'text-rose-300' : entry.level === 'priority' ? 'text-amber-300' : 'text-cyan-300'
-                      }`}
+                      className="text-[11px] uppercase tracking-[0.2em]"
+                      style={{
+                        color: entry.level === 'danger' ? '#fda4af' : entry.level === 'priority' ? '#fcd34d' : '#67e8f9',
+                      }}
                     >
                       {entry.level}
                     </span>
                   </div>
-                  <p className="mt-2 text-sm text-slate-200">{entry.text}</p>
+                  <p className="mt-2 text-sm" style={{ color: '#f8fafc' }}>
+                    {entry.text}
+                  </p>
                 </div>
               ))}
             </div>
