@@ -545,19 +545,43 @@ function SimulationContext({ state, dispatch }) {
                     initial={{ opacity: 0, x: 18 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -18 }}
-                    className={`rounded-2xl border px-4 py-3 text-sm font-medium ${
+                    className="rounded-2xl border px-4 py-3 text-sm font-semibold"
+                    style={
                       alert.type === 'danger'
-                        ? 'border-rose-400/40 bg-slate-900/95 text-rose-200'
+                        ? {
+                            borderColor: 'rgba(239, 68, 68, 0.9)',
+                            backgroundColor: 'rgba(127, 29, 29, 0.98)',
+                            color: '#fff1f2',
+                            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08)',
+                          }
                         : alert.type === 'priority'
-                          ? 'border-amber-400/40 bg-slate-900/95 text-amber-200'
-                          : 'border-cyan-400/40 bg-slate-900/95 text-cyan-200'
-                    }`}
+                          ? {
+                              borderColor: 'rgba(251, 191, 36, 0.75)',
+                              backgroundColor: 'rgba(120, 53, 15, 0.96)',
+                              color: '#fffbeb',
+                              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08)',
+                            }
+                          : {
+                              borderColor: 'rgba(56, 189, 248, 0.35)',
+                              backgroundColor: 'rgba(239, 246, 255, 0.98)',
+                              color: '#0f172a',
+                              boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.75)',
+                            }
+                    }
                   >
                     {alert.text}
                   </motion.div>
                 ))
               ) : (
-                <div className="rounded-2xl border border-white/20 bg-slate-900/90 p-4 text-sm text-slate-100 font-medium">
+                <div
+                  className="rounded-2xl border p-4 text-sm font-semibold"
+                  style={{
+                    borderColor: 'rgba(56, 189, 248, 0.35)',
+                    backgroundColor: 'rgba(239, 246, 255, 0.98)',
+                    color: '#0f172a',
+                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.75)',
+                  }}
+                >
                   No active warnings. Traffic flow is stable.
                 </div>
               )}
