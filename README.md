@@ -165,6 +165,6 @@ This project is open source. See the [LICENSE](LICENSE) file for details.
 
 <div align="center">
 
-Made with ❤️ by [sommayadeep](https://github.com/sommayadeep)
+Made with by [sommayadeep](https://github.com/sommayadeep)
 
 </div>
