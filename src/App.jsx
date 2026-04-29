@@ -13,6 +13,7 @@ import {
   TrafficCone,
 } from 'lucide-react';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { chooseSmartLane, getSmartGreenDuration, getActiveServiceRate } from './algorithms';
 
 const LANES = ['north', 'south', 'east', 'west'];
 const LANE_LABELS = {
@@ -88,40 +89,6 @@ const roundTime = (seconds) => {
 };
 
 const laneSequence = ['north', 'east', 'south', 'west'];
-
-const chooseSmartLane = (system) => {
-  let bestLane = 'north';
-  let bestCount = -1;
-
-  for (const lane of LANES) {
-    const count = system.lanes[lane].vehicleCount;
-    if (count > bestCount) {
-      bestCount = count;
-      bestLane = lane;
-    }
-  }
-
-  return bestLane;
-};
-
-const getSmartGreenDuration = (queueCount) => {
-  const dynamic = BASE_GREEN_TIME + Math.ceil(Math.sqrt(Math.max(0, queueCount)) * 1.9);
-  return Math.min(MAX_SMART_GREEN_TIME, Math.max(MIN_SMART_GREEN_TIME, dynamic));
-};
-
-const getActiveServiceRate = (system, currentMode, emergencyActive, emergencyLane) => {
-  const lane = system.lanes[system.activeLane];
-
-  if (emergencyActive && system.activeLane === emergencyLane) {
-    return 14;
-  }
-
-  if (currentMode === 'normal') {
-    return SERVICE_BASE + 2;
-  }
-
-  return Math.min(SMART_SERVICE_MAX, Math.max(SMART_SERVICE_MIN, Math.ceil(6 + lane.vehicleCount * 0.22)));
-};
 
 function ControlGroup({ label, value, children }) {
   return (
